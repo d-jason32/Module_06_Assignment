@@ -52,8 +52,8 @@ public class HelloController implements Initializable{
 
     /**
      * Only if all text fields are valid, you can go to the next page.
-     * @param event
-     * @throws IOException
+     * @param event the action event caused by clicking the register button
+     * @throws IOException if page2 cannot be loaded
      */
     @FXML
     void goToPage(ActionEvent event) throws IOException {
@@ -63,7 +63,7 @@ public class HelloController implements Initializable{
     }
 
     /**
-     * Checks if every text field is valid.
+     * Checks if every text field is valid and changes their emoji from x to a checkmark.
      */
     void checkIfCorrect(){
         if (namePattern.matcher(firstName.getText()).matches()){
@@ -110,6 +110,7 @@ public class HelloController implements Initializable{
 
     /**
      * If every field is valid, the canRegister is set to true.
+     * If not, it is set to false.
      */
     void setRegisterButton(){
         if (firstNameBool == true
@@ -142,8 +143,8 @@ public class HelloController implements Initializable{
      * it is correct, check if the register button should be
      * enabled, and change the color of the button if
      * every text field is correct.
-     * @param url
-     * @param resourceBundle
+     * @param url location of the root object
+     * @param resourceBundle resources used to find the root object
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
