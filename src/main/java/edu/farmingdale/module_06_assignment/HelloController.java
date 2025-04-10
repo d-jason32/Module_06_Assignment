@@ -6,44 +6,36 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.regex.*;
-
+// Initializable needed to implement initializable
+import javafx.fxml.Initializable;
 import java.io.IOException;
 
-public class HelloController{
+public class HelloController implements Initializable{
     @FXML
     private TextField dob;
-
     @FXML
     private TextField email;
-
     @FXML
     private TextField firstName;
-
     @FXML
     private TextField lastName;
-
     @FXML
     private StackPane loginBox;
-
     @FXML
     private Button registerButton;
-
     @FXML
     private TextField zipcode;
-
     @FXML
     private Label dobCheck;
-
     @FXML
     private Label emailCheck;
-
     @FXML
     private Label firstNameCheck;
-
     @FXML
     private Label lastNameCheck;
-
     @FXML
     private Label zipcodeCheck;
 
@@ -56,12 +48,10 @@ public class HelloController{
     // Zipcode must be a number with 5 digits
     Pattern zipcodePattern = Pattern.compile("^\\d{5}$");
 
-    //Matcher m = dob.matcher("Now is the time"); // entire string
 
     @FXML
     void goToPage(ActionEvent event) throws IOException {
-        checkIfCorrect();
-        //HelloApplication.setRoot("page2");
+        HelloApplication.setRoot("page2");
     }
 
     void checkIfCorrect(){
@@ -94,6 +84,17 @@ public class HelloController{
         }
         else {
             zipcodeCheck.setText("❌");
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        TextField[] fields = { firstName, lastName, email, dob, zipcode };
+
+        for (TextField field : fields) {
+            field.setOnMouseClicked(e -> {
+                checkIfCorrect();
+            });
         }
     }
 
