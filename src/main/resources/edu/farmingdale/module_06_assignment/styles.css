@@ -22,3 +22,7 @@
     -fx-border-radius: 4;
     -fx-background-radius: 4;
 }
+
+#registerButton {
+    -fx-background-color: #a9a9a9;
+}
